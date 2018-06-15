@@ -1,101 +1,92 @@
 
-	
-	$(document).ready(function(){
-	
-	var i = 2;
 
-	
-	$("#add").on("click", function(){
-	
-	i++;
-	var a = $("#userInput").val();	
-	
-    $("#frame ul").append('<li class="list-group-item list-group-item-primary"><p>'+a+'</p><label class="check2 container2"><input type="checkbox" name="3"><span class="checkmark"></span></label></li>');
-	
-	//$("label").addClass("check2");
-	
-	
-	//alert($(".check2").length);
-	
-								});
-	
-	
+$(document).ready(function () {
 
-	
-	
-	
-	$('input[name=0]').click(function () {
-    if ($('input[name=0]').is(':checked')) {
-        $("li p").eq(0).addClass("scratch");
-    }
-    else{
+    var i = 2;
+
+
+    $("#add").on("click", function () {
+
+        i++;
+        var a = $("#userInput").val();
+
+        var items = $('#myList li').length
+        $("#myList").append('<li class="list-group-item list-group-item-primary"><p id="' + (items + 1) + '-text">' + a + '</p><label class="check2 container2"><input id="' + (items + 1) + '-check" class="check-test" type="checkbox"><span class="checkmark"></span></label></li>');
+
+
+
+
+        //$("label").addClass("check2");
+
+
+        //alert($(".check2").length);
+
+    });
+
+
    
-		$("li p").eq(0).removeClass("scratch");
-    }
+
+    $(document).on('click', '.check-test', function (event) {
+        console.log(event.target.id);
+        var id = event.target.id;
+        var auxSplit = id.split('-');
+        var intId = auxSplit[0];
+        console.log(intId);
+
+        $('#' + intId + "-text").addClass("scratch");
+    })
+
+
+    $('input[name=3]').click(function () {
+        if ($('input[name=3]').is(':checked')) {
+            $("li p").eq(3).addClass("scratch");
+        }
+        else {
+
+            $("li p").eq(3).removeClass("scratch");
+        }
+    });
+
+
+
+
+
+
+
+    $("input").on("click", "input[name=3]", function () {
+
+        if ($('input[name=3]').is(':checked')) {
+            $("li p").eq(3).addClass("scratch");
+        }
+        else {
+
+            $("li p").eq(3).removeClass("scratch");
+        }
+
+
+
+
+    });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 });
-	
-	
-	$('input[name=1]').click(function () {
-    if ($('input[name=1]').is(':checked')) {
-        $("li p").eq(1).addClass("scratch");
-    }
-    else{
-   
-		$("li p").eq(1).removeClass("scratch");
-    }
-});
-	
-	
-	$('input[name=2]').click(function () {
-    if ($('input[name=2]').is(':checked')) {
-        $("li p").eq(2).addClass("scratch");
-    }
-    else{
-   
-		$("li p").eq(2).removeClass("scratch");
-    }
-});
-	
-	
-	
-	
-	
-	
-	
-	$("input").on("click", "input[name=3]", function() {
-		
-		if ($('input[name=3]').is(':checked')) {
-        $("li p").eq(3).addClass("scratch");
-    }
-    else{
-   
-		$("li p").eq(3).removeClass("scratch");
-    }
-		
-		
-		
-		
-	});
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	});
